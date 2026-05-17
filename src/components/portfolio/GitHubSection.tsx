@@ -9,10 +9,10 @@ import { Star, GitFork } from "lucide-react";
  * We can eventually move this to src/data/repos.ts
  */
 const repos = [
-  { name: "lit-design-system", desc: "Token-driven primitives built with Lit.", stars: 248, forks: 32, lang: "TypeScript" },
-  { name: "vue-perf-toolkit", desc: "Bundle and runtime profiling helpers for Vue 3.", stars: 187, forks: 21, lang: "TypeScript" },
-  { name: "wc-codemods", desc: "Codemods for migrating React → Web Components.", stars: 134, forks: 18, lang: "JavaScript" },
-  { name: "tokens-cli", desc: "CLI to compile design tokens to CSS, JS and Swift.", stars: 96, forks: 11, lang: "TypeScript" },
+  { name: "tokens-cli", desc: "CLI to compile design tokens to CSS, JS and Swift.", stars: 5, forks: 2, lang: "TypeScript" },
+  { name: "test-subastop", desc: "Inventory management system built for a technical challenge, featuring seamless product administration, optimized state handling, and data persistence.", stars: 4, forks: 2, lang: "TypeScript" },
+  { name: "test-lozamora", desc: "Web platform that allows users to search for job opportunities by keyword, location, work mode, and job category.", stars: 5, forks: 2, lang: "Vue js" },
+  { name: "landing-masuno", desc: "Landing page developed as part of a technical assessment to demonstrate skills in modern web layout, UI structure, and responsive interface design focused on user experience and effective content distribution.", stars: 4, forks: 2, lang: "HTML" },
 ];
 
 /**

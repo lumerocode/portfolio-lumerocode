@@ -1,7 +1,7 @@
 // Plain data — safe to copy to a React Native project.
 
 export type CertCategory =
-  | "Backend"
+  // | "Backend"
   | "Cibersecurity"
   | "Cloud & DevOps"
   | "CMS"
@@ -269,7 +269,7 @@ export const certs: Cert[] = [
 ];
 
 export const certCategories: CertCategory[] = [
-  "Backend",
+  // "Backend",
   "Cibersecurity",
   "Cloud & DevOps",
   "CMS",

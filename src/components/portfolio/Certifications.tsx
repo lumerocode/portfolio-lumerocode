@@ -63,10 +63,7 @@ export function Certifications() {
   const filtered = useMemo(() => {
     return certs.filter(c => {
       const yOk = year === "all" || getCertYear(c) === year;
-      
-      // Updated filter logic to support arrays: check if the selected category exists in the cert's categories
       const cOk = cat === "all" || c.cat.includes(cat as CertCategory);
-      
       return yOk && cOk;
     });
   }, [year, cat]);
@@ -124,34 +121,35 @@ export function Certifications() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3, delay: (i % 9) * 0.03 }}
-                className="group relative flex items-center gap-3 rounded-xl border border-border bg-card p-4 hover:border-emerald/40 transition-all cursor-pointer"
+                /* CHANGED: Using grid instead of flex to prevent overflow and justify content better on small screens */
+                className="group relative grid grid-cols-[auto_1fr_auto] items-center gap-3 rounded-xl border border-border bg-card p-3 sm:p-4 hover:border-emerald/40 transition-all cursor-pointer overflow-hidden"
                 onClick={() => setOpen(c)}
               >
                 {/* Award Icon */}
-                <div className="size-9 rounded-lg bg-accent grid place-items-center shrink-0">
+                <div className="size-8 sm:size-9 rounded-lg bg-accent grid place-items-center shrink-0">
                   <Award className="size-4 text-emerald" />
                 </div>
                 
-                <div className="min-w-0 flex-1">
-                  <div className="text-sm font-medium leading-tight transition-colors group-hover:text-emerald">
+                {/* Text Content: min-w-0 is crucial here for inner text truncation/wrapping */}
+                <div className="min-w-0 flex flex-col justify-center">
+                  <div className="text-sm font-medium leading-tight transition-colors group-hover:text-emerald line-clamp-2">
                     {c.t[lang as 'es' | 'en'] || c.t.es}
                   </div>
                   <div className="mt-0.5 text-xs text-muted-foreground font-mono truncate">
                     {c.o} · {c.date}
                   </div>
-                  {/* Displaying categories joined by a separator */}
-                  <div className="mt-1 inline-block text-[10px] font-mono uppercase tracking-wider text-emerald/80 font-semibold">
+                  <div className="mt-1 text-[10px] font-mono uppercase tracking-wider text-emerald/80 font-semibold truncate">
                     {c.cat.join(" / ")}
                   </div>
                 </div>
                 
                 {/* Download Button */}
-                <div className="flex items-center justify-center shrink-0 ml-2">
+                <div className="flex items-center justify-center shrink-0">
                   <a 
                     href={`/certificates/${c.file}`} 
                     download 
                     onClick={(e) => e.stopPropagation()} 
-                    className="size-9 rounded-lg border border-border bg-background/50 grid place-items-center text-muted-foreground group-hover:text-emerald group-hover:border-emerald transition-all duration-300 shadow-sm"
+                    className="size-8 sm:size-9 rounded-lg border border-border bg-background/50 grid place-items-center text-muted-foreground group-hover:text-emerald group-hover:border-emerald transition-all duration-300 shadow-sm"
                   >
                     <Download className="size-4" />
                   </a>
